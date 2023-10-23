@@ -1,0 +1,21 @@
+name: "first-workflow"
+on:
+  - push
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print string
+        run: echo "hello world!"
+
+  parallel-job:
+    runs-on: macos-latest
+    steps:
+      - name: print macos version
+        run: sw_vers
+
+  dependent-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print string
+        run: echo "i'm dependency ubuntu"
