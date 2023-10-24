@@ -1,0 +1,20 @@
+name: Chaeckout
+on: [push]
+
+jobs:
+  checkout-and-display-file:
+    runs-on: unbuntu-latest
+    steps:
+      - name: List Files Before
+        run: ls -a
+
+      - name: checkout
+        run: |
+          git init
+          echo "github_actor: $GITHUB_ACTOR"
+          git remote add origin "https://$GITHU_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          git fetch origin
+          git chekcout master
+
+      - name: List Files After
+        run: ls -a
