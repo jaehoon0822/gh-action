@@ -16,7 +16,7 @@ jobs:
           echo $GITHUB_WORKSPACE
 
       - name: Change working dir
-        working-directory: /app
+        working-directory: /home/runner
         run: pwd
 
   display-wd-info-windows:
@@ -29,9 +29,10 @@ jobs:
         run: |
           Get-Location
           dir
-          echo $env:$GITHUB_SHA
-          echo $env:$GITHUB_REPOSITORY
-          echo $env:$GITHUB_WORKSPACE
+          echo $env:GITHUB_SHA
+          echo $env:GITHUB_REPOSITORY
+          echo $env:GITHUB_WORKSPACE
+
       - name: Python Shell
         shell: python
         run: |
