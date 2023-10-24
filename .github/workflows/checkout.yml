@@ -1,5 +1,10 @@
-name: Chaeckout
+name: Checkout
 on: [push]
+
+# $GITHUB_ACTOR
+# --> github 를 실행하는 actor
+# $GITHUB_REPOSITORY
+# --> github repository
 
 jobs:
   checkout-and-display-file:
