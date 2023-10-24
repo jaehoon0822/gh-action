@@ -7,6 +7,18 @@ on: [push]
 # --> github repository
 
 jobs:
+  chekcout-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files Before
+        run: ls -a
+
+      - name: chekcout action
+        uses: actions/checkout@v4
+
+      - name: List Files After
+        run: ls -a
+
   checkout-and-display-file:
     runs-on: ubuntu-latest
     steps:
