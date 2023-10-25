@@ -43,12 +43,11 @@ jobs:
         run: echo '${{ github.ref }}'
       - name: Multiline Evn Var
         run: |
-          MY_EOF="1234"
-          echo $MY_EOF
+          MY_EOF=1234
           echo "RANDOM_JOKE<<$MY_EOF" >> "$GITHUB_ENV"
-          echo "This is jock: " >> "$GITHUB_ENV"
-          curl -s https://icanhazdadjock.com/ >> "$GITHUB_ENV"
-          echo "" 
+          echo "This is joke: " >> "$GITHUB_ENV"
+          curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
+          echo "" >> "$GITHUB_ENV"
           echo "$MY_EOF" >> "$GITHUB_ENV"
       - name: Log Custom ENV vars
         env:
