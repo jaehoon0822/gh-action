@@ -45,7 +45,7 @@ jobs:
         run: |
           DELIMITER=1234
           echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
-          echo "조크다: " >> "$GITHUB_ENV"
+          echo "This is jock: " >> "$GITHUB_ENV"
           curl -s https://icanhazdadjock.com/ >> "$GITHUB_ENV"
           echo "" 
           echo "$DELIMITER >> "$GITHUB_ENV"
