@@ -3,6 +3,19 @@ on:
   schedule:
     # see https://crontab.grue
     # min hour day(month) month day(week)
+    # 1분마다 설정했더니 stackoverflow 에서
+    #
+    #- cron: "*/1 * * * *" # JUST FOR TESTING
+    #
+    # 5분마다 처리된다고 한다.
+    #
+    # https://stackoverflow.com/questions/63192132/why-does-my-cron-configured-github-action-not-run-every-2-minutes
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+    #
+    # docs 에도 다음과 같은 구문이 있다
+    #
+    # The shortest interval you can run scheduled workflows is once every 5 minutes.
+    #
     - cron: "*/5 * * * *" # JUST FOR TESTING
 
 jobs:
