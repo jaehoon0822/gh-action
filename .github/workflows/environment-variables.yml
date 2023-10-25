@@ -43,7 +43,7 @@ jobs:
         run: echo '${{ github.ref }}'
       - name: Multiline Evn Var
         run: |
-          MY_EOF=(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          MY_EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "RANDOM_JOKE<<$MY_EOF" >> "$GITHUB_ENV"
           echo "This is joke: " >> "$GITHUB_ENV"
           curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
