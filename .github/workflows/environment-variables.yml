@@ -43,12 +43,11 @@ jobs:
         run: echo '${{ github.ref }}'
       - name: Multiline Evn Var
         run: |
-          DELIMITER=1234
-          echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
+          echo 'RANDOM_JOKE<<EOF' >> "$GITHUB_ENV"
           echo "This is jock: " >> "$GITHUB_ENV"
           curl -s https://icanhazdadjock.com/ >> "$GITHUB_ENV"
           echo "" 
-          echo "$DELIMITER >> "$GITHUB_ENV"
+          echo 'EOF' >> $GITHUB_ENV"
       - name: Log Custom ENV vars
         env:
           STEP_LEVEL_ENV: Available to only this step
