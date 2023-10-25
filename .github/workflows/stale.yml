@@ -1,0 +1,17 @@
+name: Stale Issues & PRs
+on:
+  schedule:
+    # see https://crontab.grue
+    # min hour day(month) month day(week)
+    # - cron: "* * * * *"
+    - cron: "0/5 * * * *" # JUST FOR TESTING
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v8
+        with:
+          stale-issue-message: :"This is some message"
+          days-before-stale: 1
+          days-before-close: 5
