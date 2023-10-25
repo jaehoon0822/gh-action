@@ -41,6 +41,14 @@ jobs:
         # github-action 에 의해
         # 이미 존재하는 객체이다.
         run: echo '${{ github.ref }}'
+      - name: Multiline Evn Var
+        run: |
+          DELIMITER=(dd if=/dev/urandom bs-15 count=1 status=none | base64)
+          echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
+          echo "조크다: " >> "$GITHUB_ENV"
+          curl -s https://icanhazdadjock.com/ >> "$GITHUB_ENV"
+          echo "" >> "$GITHUB_ENV"
+          echo "$DELIMITER >> "$GITHUB_ENV"
       - name: Log Custom ENV vars
         env:
           STEP_LEVEL_ENV: Available to only this step
@@ -51,3 +59,4 @@ jobs:
           echo $WF_LEVEL_ENV
           echo $JOB_LEVEL_ENV
           echo $NEW_ENV_VAR
+          echo $RANDOM_JOKE
