@@ -1,0 +1,48 @@
+name: Environment Variables
+on: [push]
+
+env:
+  WF_LEVEL_ENV: Avaliable to all jobs
+
+jobs:
+  env-vars-and-context:
+    runs-on: ubuntu-latest
+    # 이부분은 중요하다.
+    # 만약 if 문에 환경변수를 사용한다면
+    # 환경변수가 생성되기 전에 (before stpes run)
+    # 사용하므로 error 가 발생한다.
+    # === DONT DO THIS ==
+    # if: $GITHUB_REF === 'refs/heads/master'
+    # ====
+
+    if: github.ref == 'refs/heads/master'
+    env:
+      JOB_LEVEL_ENV: Available to all steps in env-vars-and-context job
+    steps:
+      - name: Log ENV VAR
+        # this is environment variable
+        # runner machine 이
+        # 삽입(interpolated: 끼워넣다) 한다.
+        # --> interpolated 는 보간하다로 해석하는데
+        #     보통은 변경되는 데이터를 중간에 넣어주는
+        #     작업을 보간이라고 한다.
+        #
+        # 즉, runner machine 이 실행되면서
+        # 환경변수를 생성한다.
+        run: echo $GITHUB_REF
+      - name: Log Context
+        # 컨텍스트는 runner machine 이 실행된후
+        # 생성되는 환경변수와 다르게
+        # runner machine 이 실행되기 전에
+        # github-action 에 의해
+        # 이미 존재하는 객체이다.
+        run: echo '${{ github.ref }}'
+      - name: Log Custom ENV vars
+        env:
+          STEP_LEVEL_ENV: Available to only this step
+          WF_LEVEL_ENV: Overriden in step
+        run: |
+          echo '${{ env.STEP_LEVEL_ENV }}'
+          echo $STEP_LEVEL_ENV
+          echo $WF_LEVEL_ENV
+          echo $JOB_LEVEL_ENV
