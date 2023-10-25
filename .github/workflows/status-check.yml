@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Step 1
         run: sleep 20
+      # 강제로 failed --> falure() == true
+      - name: Step 2
+        run: exit 1
       - name: Runs on Fialure
         if: failure()
         run: echo 'Runs only on failure'
