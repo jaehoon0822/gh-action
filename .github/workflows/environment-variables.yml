@@ -43,7 +43,7 @@ jobs:
         run: echo '${{ github.ref }}'
       - name: Multiline Evn Var
         run: |
-          DELIMITER=(dd if=/dev/urandom bs-15 count=1 status=none | base64)
+          DELIMITER=(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
           echo "조크다: " >> "$GITHUB_ENV"
           curl -s https://icanhazdadjock.com/ >> "$GITHUB_ENV"
