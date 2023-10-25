@@ -3,7 +3,7 @@ on:
   schedule:
     # see https://crontab.grue
     # min hour day(month) month day(week)
-    - cron: "1/1 * * * *" # JUST FOR TESTING
+    - cron: "*/5 * * * *" # JUST FOR TESTING
 
 jobs:
   stale:
