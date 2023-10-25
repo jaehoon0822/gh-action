@@ -4,7 +4,7 @@ on:
     # see https://crontab.grue
     # min hour day(month) month day(week)
     # - cron: "* * * * *"
-    - cron: "0/5 * * * *" # JUST FOR TESTING
+    - cron: "0/1 * * * *" # JUST FOR TESTING
 
 jobs:
   stale:
