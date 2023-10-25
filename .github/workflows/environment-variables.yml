@@ -30,6 +30,10 @@ jobs:
         # 즉, runner machine 이 실행되면서
         # 환경변수를 생성한다.
         run: echo $GITHUB_REF
+      - name: set Env var
+        run: |
+          echo "NEW_ENV_VAR=$(date)" >> "$GITHUB_ENV"
+          echo "JOB_LEVEL_ENV=$RANDOM" >> "$GITHUB_ENV"
       - name: Log Context
         # 컨텍스트는 runner machine 이 실행된후
         # 생성되는 환경변수와 다르게
@@ -46,3 +50,4 @@ jobs:
           echo $STEP_LEVEL_ENV
           echo $WF_LEVEL_ENV
           echo $JOB_LEVEL_ENV
+          echo $NEW_ENV_VAR
