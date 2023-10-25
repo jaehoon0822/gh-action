@@ -3,8 +3,10 @@ on:
   workflow_run:
     workflows: [Repository Events]
     types: [completed]
+    branches:
+      - main
 jobs:
   echo-string:
-    runs-on: untuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo "I was triggered because 'Repository Events' was compleated"

@@ -1,6 +1,22 @@
 name: Repository Events
 on:
   push:
+    branches:
+      - main
+      - "feature/*" # match feature/a feature/b
+        # doesn't match feature/a/b
+      - "feature/**" # matche feature/a and feature/a/b
+      # - "!feature/a" # ignore branch feature/a
+    # feature/a ignore branch
+    branches-ignore:
+      - "feature/a"
+    tags:
+      - v1.* # match v1.1, v1.1.2
+      - "!v1.1.1"
+    paths:
+      - "**.js"
+      - "!app.js"
+      # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#patterns-to-match-file-paths
   pull_request:
     types: [opened, assigned, reopened, synchronize]
   issues:
