@@ -38,5 +38,5 @@ jobs:
       - name: Show file contents
         uses: docker://node:18.16-alpine3.17
         with:
-          entrypoitn: cat
+          entrypoint: cat
           args: text.txt
