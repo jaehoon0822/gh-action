@@ -7,16 +7,26 @@ on:
         type: environment
         required: true
 
-# concurrency 를 지정하여 동시성 그룹을 생성
-# 여기서 concurrency-1 은
-# concurrency group 을 생성할 문자열이다.
+concurrency:
+  # concurrency 를 지정하여 동시성 그룹을 생성
+  # 여기서 concurrency-1 은
+  # concurrency group 을 생성할 문자열이다.
 
-# 여러개의 같은 workflow 가 작동했다고 해보자
-# 해당 workflow 들이 concurrency group 에
-# 속한 workflow 라면 오직 한번만 실행된다.
-#
-# 내 생각에는 식별자 역할을 하는것 같다
-concurrency: concurrency-1
+  # 여러개의 같은 workflow 가 작동했다고 해보자
+  # 해당 workflow 들이 concurrency group 에
+  # 속한 workflow 라면 오직 한번만 실행된다.
+  #
+  # 내 생각에는 식별자 역할을 하는것 같다
+  group: concurrency-1
+  # 진행중인 워크플로가 전부 취소된다.
+  # 최근의 workflow 만 실행보장
+  #
+  # workflow 를 실행해보면 맨 처음 실행한
+  # workflow 만 실행되는 것을 볼 수 있다.
+  # 이때, 가장 최신의 workflow 를 실행해야 하므로
+  # 모든 실행준은 workflow 를 취소하고 가장 최근의
+  # workflow 의 실행을 보장해주는 옵션이다.
+  cancel-in-progress: true
 
 jobs:
   sleep:
