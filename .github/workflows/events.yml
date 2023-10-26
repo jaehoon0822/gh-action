@@ -19,6 +19,10 @@ on:
       # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#patterns-to-match-file-paths
   pull_request:
     types: [opened, assigned, reopened, synchronize]
+    branches:
+      - main
+    paths:
+      - "**.js"
   issues:
     types: [opened]
 
