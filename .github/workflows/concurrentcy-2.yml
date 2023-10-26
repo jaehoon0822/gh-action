@@ -6,6 +6,18 @@ on:
         description: "Environment"
         type: environment
         required: true
+
+# concurrency 를 지정하여 동시성 그룹을 생성
+# 여기서 concurrency-1 은
+# concurrency group 을 생성할 문자열이다.
+
+# 여러개의 같은 workflow 가 작동했다고 해보자
+# 해당 workflow 들이 concurrency group 에
+# 속한 workflow 라면 오직 한번만 실행된다.
+#
+# 내 생각에는 식별자 역할을 하는것 같다
+concurrency: concurrency-1
+
 jobs:
   sleep:
     runs-on: ubnunt-latest
