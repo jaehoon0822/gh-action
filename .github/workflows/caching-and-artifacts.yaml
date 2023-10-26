@@ -6,6 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Cache node modules
+        id: cache-dependancies
+        uses: actions/cache@v3
+        with:
+          # npm 이 저장되는 폴더
+          path: ~/.npm
+          key: "npm-cache"
+      - name: Display Cache outpu
+        run: echo '${{ toJson(steps.cache-dependancies.outputs) }}'
       - name: Install dependancy
         run: npm ci
       - name: Use Axios
