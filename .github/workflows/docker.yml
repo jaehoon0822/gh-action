@@ -24,4 +24,4 @@ jobs:
           node -v
           cat /etc/os-release
       - name: Log Env
-        run: echo ${{ github.env.API_URL }}
+        run: echo "$API_URL"
