@@ -9,4 +9,4 @@ on:
         required: false
 jobs:
   calling-a-reusable-wf:
-    uses: ../actions/reusable.yml
+    uses: ./.github/actions/reusable.yml
