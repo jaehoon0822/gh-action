@@ -12,7 +12,12 @@ jobs:
         with:
           # npm 이 저장되는 폴더
           path: ~/.npm
-          key: "npm-cache"
+          # npm-cache-[hashkey]
+          key: "${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}"
+          # linux-npm-cache-[hashkey]
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+            ${{ runner.os }}-
       - name: Display Cache outpu
         run: echo '${{ toJson(steps.cache-dependancies.outputs) }}'
       - name: Install dependancy
