@@ -10,3 +10,7 @@ on:
 jobs:
   calling-a-reusable-wf:
     uses: ./.github/actions/reusable.yml
+    with:
+      name: ${{ inputs.name }}
+    secrets:
+      access-token: ${{ secrets.ACCESS_TOKEN }}
