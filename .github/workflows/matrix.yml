@@ -3,14 +3,37 @@ on: [push]
 
 jobs:
   node-matrix:
+    continue-on-error: false
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
         node-version: [14, 15, 16]
+        includes:
+          - os: ubuntu-latest
+            is-ubuntu: true
+          - os: macos-latest
+            node-version: 15
+          # add original combinations
+          - experimental: false
+          - os: ubuntu-latest
+            node-version: 16
+            experimental: true
+          - os: ubuntu-latest
+            node-version: 17
 
+        excludes:
+          # excludes all ubuntu-latest
+          #- os: ubuntu-latest
+          # excludes [os: ubuntu-latest , node-version: 14]
+          - os: ubuntu-latest
+            node-version: 14
+      fail-fast: false
+      # 최대 3개만 실행
+      # max-parallel: 3
     runs-on: ${{ matrix.os }}
     steps:
       - run: node -v
+      - run: echo '${{ toJson(matrix) }}'
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
