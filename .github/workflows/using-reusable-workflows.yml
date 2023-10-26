@@ -1,0 +1,12 @@
+name: Calling Resuable Workflows
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Input description"
+        type: string
+        default: "jhoon"
+        required: false
+jobs:
+  calling-a-reusable-wf:
+    uses: ../actions/reusable.yml
