@@ -24,14 +24,18 @@ jobs:
         exclude:
           # exclude all ubuntu-latest
           #- os: ubuntu-latest
-          # exclude [os: ubuntu-latest , node-version: 14]
+          # exclude [os: ubuntu-latest , node-version: 14, *]
           - os: ubuntu-latest
             node-version: 14
-      fail-fast: false
+      fail-fast: true
       # 최대 3개만 실행
       # max-parallel: 3
     runs-on: ${{ matrix.os }}
     steps:
+      # matrix 의 experimental 이 true 이면
+      # exit 1 실행하여 실패처리
+      - if: matrix.experimental == true
+        run: exit 1
       - run: node -v
       - run: echo '${{ toJson(matrix) }}'
       - uses: actions/setup-node@v3
