@@ -18,7 +18,7 @@ concurrency:
   # 속한 workflow 라면 오직 한번만 실행된다.
   #
   # 내 생각에는 식별자 역할을 하는것 같다
-  group: ${{ github.event.inputs.environment }}
+  group: ${{ github.workflow }}-${{ github.event.inputs.environment }}
   # 진행중인 워크플로가 전부 취소된다.
   # 최근의 workflow 만 실행보장
   #
