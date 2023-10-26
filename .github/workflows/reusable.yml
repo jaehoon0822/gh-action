@@ -27,4 +27,4 @@ jobs:
       - name: Display name input
         run: echo ${{ inputs.name }}
       - name: Display access-token secret
-        run: echo ${{ secret.access-token }}
+        run: echo ${{ secrets.access-token }}
