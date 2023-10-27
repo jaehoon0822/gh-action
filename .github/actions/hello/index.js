@@ -14,7 +14,7 @@ try {
   core.setOutput("time", time.toTimeString());
 
   core.exportVariable("HELLO_TIME", time);
-  core.group("Logging github context");
+  core.startGroup("Logging github context");
   console.log(JSON.stringify(github.context, null, 2));
   core.endGroup();
 } catch (error) {
